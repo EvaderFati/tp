@@ -48,6 +48,20 @@ public class ClassGroup implements Entity {
     }
 
     /**
+     * Returns true if both class groups have the same id and belong to the same module.
+     * This defines a weaker notion of equality between two class groups.
+     */
+    public boolean isSameClassGroup(ClassGroup otherClassGroup) {
+        if (otherClassGroup == this) {
+            return true;
+        }
+
+        return otherClassGroup != null
+                && otherClassGroup.getClassGroupId().equals(getClassGroupId())
+                && otherClassGroup.getModule().equals(getModule());
+    }
+
+    /**
      * Returns true if both class groups have the same identity and fields.
      */
     @Override
